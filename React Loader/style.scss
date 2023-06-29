@@ -1,0 +1,113 @@
+$size: 15vmin;
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+section {
+  position: absolute;
+  background: rgb(23, 25, 29);
+  background: linear-gradient(
+    0deg,
+    rgba(23, 25, 29, 1) 0%,
+    rgba(40, 44, 52, 1) 27%
+  );
+  width: $size * 4;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 14px 5px #0004;
+  overflow: hidden;
+  cursor: pointer;
+
+  .elip1 {
+    animation: rotate1 3s linear infinite;
+  }
+  .elip2 {
+    animation: rotate2 3s linear infinite;
+  }
+  .elip3 {
+    animation: rotate3 3s linear infinite;
+  }
+  h1 {
+    color: #282c34;
+  }
+}
+
+.loader {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.shadow {
+    bottom: $size * -0.25;
+    opacity: 0.05;
+    filter: blur(2px) contrast(80%);
+  }
+
+  .core {
+    position: absolute;
+    width: $size / 3;
+    aspect-ratio: 1;
+    background: #00d8ff;
+    border-radius: 50%;
+    // box-shadow: inset 2px 2px 2px 1px #51b9cd, inset -1px -1px 5px 2px #85eafc;
+  }
+
+  .elip {
+    position: absolute;
+    width: $size * 2;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border-top: $size / 10 solid #00d8ff;
+    border-left: 3px solid #00d8ff;
+    border-right: 3px solid #00d8ff;
+    box-shadow: 0px -2px 0px 0px #88e8f9, inset 0px 2px 0px 0px #1f7584;
+    transform-style: preserve-3d;
+    perspective: $size * 10;
+    perspective-origin: $size;
+
+    &.elip1 {
+      transform: rotatex(45deg) rotateY(50deg) rotateZ(0deg);
+    }
+    &.elip2 {
+      transform: rotatex(45deg) rotateY(-50deg) rotateZ(-90deg);
+    }
+    &.elip3 {
+      transform: rotatex(65deg) rotateZ(90deg);
+    }
+  }
+}
+
+@keyframes rotate1 {
+  0% {
+    transform: rotatex(45deg) rotateY(50deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotatex(45deg) rotateY(50deg) rotateZ(360deg);
+  }
+}
+@keyframes rotate2 {
+  0% {
+    transform: rotatex(45deg) rotateY(-50deg) rotateZ(-90deg);
+  }
+  100% {
+    transform: rotatex(45deg) rotateY(-50deg) rotateZ(270deg);
+  }
+}
+@keyframes rotate3 {
+  0% {
+    transform: rotatex(65deg) rotateZ(90deg);
+  }
+  100% {
+    transform: rotatex(65deg) rotateZ(450deg);
+  }
+}
